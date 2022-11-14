@@ -24,13 +24,14 @@ import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.Dimension;
 
 public class NewStudent extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-
+	private JFrame frame;
 	/**
 	 * Launch the application.
 	 */
@@ -51,14 +52,27 @@ public class NewStudent extends JFrame {
 	 * Create the frame.
 	 */
 	public NewStudent() {
-		setFont(new Font("Algerian", Font.BOLD, 14));
-		setMaximizedBounds(new Rectangle(325, 125, 700, 450));
-		setBounds(100, 100, 672, 477);
+		
+		setResizable(false);
+		setUndecorated(true);
+		setTitle("ADMIN PANEL - RETU BOOK");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(325, 125, 700, 450);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 222, 173));
+		contentPane.setBackground(new Color(210, 180, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		JLabel lblNewLabel = new JLabel("Add student details");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
@@ -170,6 +184,14 @@ public class NewStudent extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnClose = new JButton("CLOSE");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit", "Inventory System",
+						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
+				setVisible(false);
+			}
+			}
+		});
 		btnClose.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnClose.setBounds(410, 361, 135, 35);
 		contentPane.add(btnClose);

@@ -140,6 +140,11 @@ public class Login extends JFrame {
 		panel.add(btnLogIn);
 		
 		JButton btnExit = new JButton("EXIT");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnExit.setBackground(Color.GREEN);
 		btnExit.setBounds(195, 141, 89, 23);

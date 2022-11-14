@@ -18,6 +18,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+import javax.swing.SwingConstants;
 
 public class NewBook extends JFrame {
 
@@ -27,6 +31,8 @@ public class NewBook extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JFrame frame;
+
 
 	/**
 	 * Launch the application.
@@ -48,62 +54,72 @@ public class NewBook extends JFrame {
 	 * Create the frame.
 	 */
 	public NewBook() {
+		
+		
+		
+		
+		
+		
+		
+		setSize(new Dimension(325, 125));
+		setUndecorated(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(325, 125, 700, 450);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 222, 173));
+		contentPane.setBackground(new Color(210, 180, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblBookId = new JLabel("book id");
 		lblBookId.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblBookId.setBounds(63, 48, 89, 14);
+		lblBookId.setBounds(133, 96, 89, 24);
 		contentPane.add(lblBookId);
 		
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel("Book Name");
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblName.setBounds(63, 73, 89, 24);
+		lblName.setBounds(133, 131, 89, 24);
 		contentPane.add(lblName);
 		
 		JLabel lblPublisher = new JLabel("publisher");
 		lblPublisher.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPublisher.setBounds(63, 108, 89, 24);
+		lblPublisher.setBounds(133, 166, 89, 24);
 		contentPane.add(lblPublisher);
 		
 		JLabel lblPrice = new JLabel("price");
 		lblPrice.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPrice.setBounds(63, 149, 89, 24);
+		lblPrice.setBounds(133, 201, 89, 24);
 		contentPane.add(lblPrice);
 		
 		JLabel lblPublisherYear = new JLabel("publisher year");
 		lblPublisherYear.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPublisherYear.setBounds(63, 184, 113, 24);
+		lblPublisherYear.setBounds(133, 236, 113, 24);
 		contentPane.add(lblPublisherYear);
 		
 		textField = new JTextField();
-		textField.setBounds(217, 43, 161, 24);
+		textField.setBounds(394, 98, 161, 24);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(217, 72, 161, 26);
+		textField_1.setBounds(394, 132, 161, 26);
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(217, 109, 161, 24);
+		textField_2.setBounds(394, 168, 161, 24);
 		contentPane.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(217, 149, 161, 24);
+		textField_3.setBounds(394, 203, 161, 24);
 		contentPane.add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(217, 182, 161, 26);
+		textField_4.setBounds(394, 237, 161, 26);
 		contentPane.add(textField_4);
 		
 		JButton btnSave = new JButton("save");
@@ -144,12 +160,27 @@ public class NewBook extends JFrame {
 			}
 		});
 		btnSave.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSave.setBounds(170, 291, 120, 59);
+		btnSave.setBounds(175, 337, 120, 59);
 		contentPane.add(btnSave);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit", "Inventory System",
+						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
+				setVisible(false);
+			}}
+		});
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnExit.setBounds(351, 291, 126, 59);
+		btnExit.setBounds(516, 337, 126, 59);
 		contentPane.add(btnExit);
+		
+		JLabel lblAddNewBook = new JLabel("ADD  NEW BOOK DETAILS");
+		lblAddNewBook.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAddNewBook.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblAddNewBook.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAddNewBook.setBounds(202, 28, 353, 38);
+		contentPane.add(lblAddNewBook);
+		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblBookId, lblName, lblPublisher, lblPrice, lblPublisherYear, textField, textField_1, textField_2, textField_3, textField_4, btnSave, btnExit}));
 	}
 }
